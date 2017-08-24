@@ -2,15 +2,7 @@ echo "Usage: sh render.sh [publish]"
 GUIDES=../../neo4j-guides
 
 function render {
-$GUIDES/run.sh index.adoc index.html +1 "$@"
-$GUIDES/run.sh intro.adoc intro.html +1 "$@"
-$GUIDES/run.sh import.adoc import.html +1 "$@"
-$GUIDES/run.sh sna.adoc sna.html +1 "$@"
-$GUIDES/run.sh contracts.adoc contracts.html +1 "$@"
-$GUIDES/run.sh exploratory.adoc exploratory.html +1 "$@"
-$GUIDES/run.sh exercises.adoc exercises.html +1 "$@"
-$GUIDES/run.sh interestingqueries.adoc interesting.html +1 "$@"
-$GUIDES/run.sh littlesis.adoc littlesis.html +1 "$@"
+$GUIDES/run.sh guide.adoc guide.html +1 "$@"
 }
 
 if [ "$1" == "publish" ]; then
@@ -25,7 +17,7 @@ if [ "$1" == "publish" ]; then
 	fi
 	echo "Publication Done"
 else
-	URL=localhost:8001/sandbox/mdm
+	URL=localhost:8001
 	render http://$URL -a csv-url=file:/// -a env-training
 	echo "Starting webserver at $URL Ctrl-C to stop"
 	python $GUIDES/http-server.py
